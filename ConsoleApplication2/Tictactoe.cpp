@@ -51,8 +51,20 @@ public:
 
 	void Tictactoe::restart()
 	{
+		system("cls");                                              //clearing the board ofter each move 
+			                                                            // initialising postions  
+		 	for (int rows = 0; rows < 3; rows++)
+		 	{
+		 		for (int cols = 0; cols < 3; cols++)
+			 		{
+			 			Board[rows][cols] = '*';
+
+			    	}
+
+			}
 
 	}
+
 	void Tictactoe::print()
 	{
 		{
@@ -76,16 +88,20 @@ public:
 	}
 	void Tictactoe::changePlayer()
 	{
+		if (currentPlayer == 'X')
+			 	{
+			 		currentPlayer = 'O';
+			 	}
+		 	else
+			 	{
+			 		currentPlayer = 'X';
+				}
 
 	}
 	bool Tictactoe::move(int field)
 	{
-
-	}
-	bool Tictactoe::validateMove(int row, int col)
-	{
 		bool isvalid;
-		                                                                // switching player 
+		// switching player 
 		switch (field)
 		{
 		case 1:
@@ -101,100 +117,111 @@ public:
 			}
 			break;
 		case 2:
-				isvalid = validateMove(0, 1);                             // check if it's an empty space 
-				if (isvalid == true)
-				{
-					Board[0][1] = currentPlayer;                         // allow player to make a move 
-					return true;
-				}
-				else {
-					return  false;                                       //if the space is taken, then it's an error move 
+			isvalid = validateMove(0, 1);                             // check if it's an empty space 
+			if (isvalid == true)
+			{
+				Board[0][1] = currentPlayer;                         // allow player to make a move 
+				return true;
+			}
+			else {
+				return  false;                                       //if the space is taken, then it's an error move 
 
-				}
-				break;
-			case 3:
-				isvalid = validateMove(0, 2);                            // check if it's an empty space 
-				if (isvalid == true)
-				{
-					Board[0][2] = currentPlayer;                          // allow player to make a move 
-					return true;
-				}
-				else {
-					return  false;                                       //if the space is taken, then it's an error move 
-				}
-				break;
-			case 4:
-				isvalid = validateMove(1, 0);                            // check if it's an empty space 
-				if (isvalid)
-				{
-					Board[1][0] = currentPlayer;                        // allow player to make a move 
-					return true;
-				}
-				else {
-					return  false;                                        //if the space is taken, then it's an error move 
-				}
-				break;
-			case 5:
-				isvalid = validateMove(1, 1);                            // check if it's an empty space 
-				if (isvalid == true)
-				{
-					Board[1][1] = currentPlayer;                       // allow player to make a move 
-					return true;
-				}
-				else {
-					return  false;                                    //if the space is taken, then it's an error move 
+			}
+			break;
+		case 3:
+			isvalid = validateMove(0, 2);                            // check if it's an empty space 
+			if (isvalid == true)
+			{
+				Board[0][2] = currentPlayer;                          // allow player to make a move 
+				return true;
+			}
+			else {
+				return  false;                                       //if the space is taken, then it's an error move 
+			}
+			break;
+		case 4:
+			isvalid = validateMove(1, 0);                            // check if it's an empty space 
+			if (isvalid)
+			{
+				Board[1][0] = currentPlayer;                        // allow player to make a move 
+				return true;
+			}
+			else {
+				return  false;                                        //if the space is taken, then it's an error move 
+			}
+			break;
+		case 5:
+			isvalid = validateMove(1, 1);                            // check if it's an empty space 
+			if (isvalid == true)
+			{
+				Board[1][1] = currentPlayer;                       // allow player to make a move 
+				return true;
+			}
+			else {
+				return  false;                                    //if the space is taken, then it's an error move 
 
-				}
-				break;
-			case 6:
-				isvalid = validateMove(1, 2);                          // check if it's an empty space 
-				if (isvalid == true)
-				{
-					Board[1][2] = currentPlayer;                       // allow player to make a move
-					return true;
-				}
-				else {
-					return  false;                                    //if the space is taken, then it's an error move 
-				}
-				break;
-			case 7:
-				isvalid = validateMove(2, 0);                         // check if it's an empty space 
-				if (isvalid == true)
-				{
-					Board[2][0] = currentPlayer;                      // allow player to make a move
-					return true;
-				}
-				else {
-					return  false;                                    //if the space is taken, then it's an error move 
-				}
-				break;
-			case 8:
-				isvalid = validateMove(2, 1);                         // check if it's an empty space 
-				if (isvalid == true)
-				{
-					Board[2][1] = currentPlayer;                      // allow player to make a move 
-					return true;
-				}
-				else {
-					return  false;                                   //if the space is taken, then it's an error move
-				}
-				break;
-			case 9:
-				isvalid = validateMove(2, 2);                         // check if it's an empty space 
-				if (isvalid == true)
-				{
-					Board[2][2] = currentPlayer;                      // allow player to make a move 
-					return true;
-				}
-				else {
-					return  false;                                    //if the space is taken, then it's an error move
-				}
-				break;
-			default:                                                 // enter a 1>=value <=9 or a character 
-				return false;
+			}
+			break;
+		case 6:
+			isvalid = validateMove(1, 2);                          // check if it's an empty space 
+			if (isvalid == true)
+			{
+				Board[1][2] = currentPlayer;                       // allow player to make a move
+				return true;
+			}
+			else {
+				return  false;                                    //if the space is taken, then it's an error move 
+			}
+			break;
+		case 7:
+			isvalid = validateMove(2, 0);                         // check if it's an empty space 
+			if (isvalid == true)
+			{
+				Board[2][0] = currentPlayer;                      // allow player to make a move
+				return true;
+			}
+			else {
+				return  false;                                    //if the space is taken, then it's an error move 
+			}
+			break;
+		case 8:
+			isvalid = validateMove(2, 1);                         // check if it's an empty space 
+			if (isvalid == true)
+			{
+				Board[2][1] = currentPlayer;                      // allow player to make a move 
+				return true;
+			}
+			else {
+				return  false;                                   //if the space is taken, then it's an error move
+			}
+			break;
+		case 9:
+			isvalid = validateMove(2, 2);                         // check if it's an empty space 
+			if (isvalid == true)
+			{
+				Board[2][2] = currentPlayer;                      // allow player to make a move 
+				return true;
+			}
+			else {
+				return  false;                                    //if the space is taken, then it's an error move
+			}
+			break;
+		default:                                                 // enter a 1>=value <=9 or a character 
+			return false;
 		}
 	}
+	bool Tictactoe::validateMove(int row, int col)
+	{
+		if (Board[row][col] != 'X' && Board[row][col] != 'O')
+			 		return true;                                     //the move is legal 
+			else
+			 		return false;
+
+	}
+
 	bool Tictactoe::isWon(int playtimes)
 	{
+
+
 	}
 };
