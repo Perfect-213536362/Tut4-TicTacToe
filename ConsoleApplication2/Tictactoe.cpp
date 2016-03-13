@@ -2,7 +2,6 @@
 #include"iostream"
 #include<Windows.h>
 #include<stdlib.h>
-#include "Tictactoe.h"
 
 
 using namespace std;
@@ -221,7 +220,51 @@ public:
 
 	bool Tictactoe::isWon(int playtimes)
 	{
+		int i, j;
+		// checking for draw 
+		if (playtimes == 9)
+			return false;
+		//horizontally checking for winner 
+		for (i = 0; i < 3; i++)
+		{
+			int count = 0;
+			for (j = 0; j < 3; j++)
+			{
+				if (Board[i][j] == currentPlayer)
+					count++;
+				if (count == 3)
+					return true;
+			}
+		}
 
+		//vertically checking for a winner
+		for (i = 0; i < 3; i++)
+		{
+			int count = 0;
+			for (j = 0; j < 3; j++)
+			{
+				if (Board[j][i] == currentPlayer)
+					count++;
+				if (count == 3)
+					return true;
+			}
+		}
 
+		// checking for diagonal winner 
+		if ((Board[0][0] == currentPlayer) && (Board[1][1] == currentPlayer))
+		{
+			if (Board[2][2] == currentPlayer)
+			{
+				return true;
+			}
+		}
+		else if ((Board[0][2] == currentPlayer) && (Board[1][1] == currentPlayer))
+		{
+			if (Board[2][0] == currentPlayer)
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 };
