@@ -7,6 +7,9 @@
 class Tictactoe
 {
 private:
+	char currentPlayer;
+ 	char Board[3][3]; 
+	int palce;
 
 
 public:
